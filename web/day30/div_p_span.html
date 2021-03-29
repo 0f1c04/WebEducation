@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .aa {
+            border: 5px dotted blue;
+        }
+
+        .bb {
+            border: 5px dotted green;
+        }
+
+        .cc {
+            border: 5px dotted yellow;
+            background-color: beige;
+        }
+
+        span {
+            background-color: orange;
+        }
+
+        p {
+            color: gray;
+            border: 1px solid red;
+        }
+
+        img {
+            display: block;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+<h1>공간분할: div, p, span</h1>
+<!-- 공간분할:div, p, span-->
+<div class="aa">
+    공간분할에는 div태그가 있다. <br>
+    공간분할에는 div태그가 있다.
+    <p style="background-color: yellow;">공간분할에는 div태그가 있다.</p>
+    <p>공간분할에는 div태그가 있다.</p>
+    <p>공간분할에는 p태그가 있다. 일반적으로 <span>한 줄에 사용</span></p>
+</div>
+
+<div class="bb">
+    <p>공간분할에는 div태그가 있다.</p>
+    <p>공간분할에는 div태그가 있다.</p>
+    <p>공간분할에는 div태그가 있다.</p>
+    <p>공간분할에는 div태그가 있다.</p>
+    <p>공간분할에는 p태그가 있다. 일반적으로 <span>한 줄에 사용</span></p>
+</div>
+
+<div class="cc">
+    <!-- 상대경로 : 현재위치기준 -->
+    <img src="../WebContents/03/images/activity.jpg" alt="이곳에 activity 이미지가 있음" width="100px" height="100px"/>
+    <!-- 절대경로 :  /로 시작 -->
+    <figure>
+        <figcaption>첫 번째 그림</figcaption>
+        <img src="/WebContents/03/images/activity.jpg" alt="이곳에 activity 이미지가 있음" width="100px" height="100px"/>
+    </figure>
+    <figure>
+        <img src="http://localhost:9090/WebContents/03/images/activity.jpg" alt="이곳에 activity 이미지가 있음" width="100px"
+             height="100px"/>
+        <figcaption>두 번째 그림</figcaption>
+    </figure>
+</div>
+
+</body>
+</html>
