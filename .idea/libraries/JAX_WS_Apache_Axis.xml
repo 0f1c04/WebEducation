@@ -9,6 +9,7 @@
       <root url="jar://$PROJECT_DIR$/lib/jaxrpc.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/axis.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/saaj.jar!/" />
+      <root url="jar://$USER_HOME$/2021/kosta/oracle/ojdbc6_g.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

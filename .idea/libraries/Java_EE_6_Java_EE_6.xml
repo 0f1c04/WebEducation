@@ -10,6 +10,7 @@
       <root url="jar://$PROJECT_DIR$/lib/javax.ejb.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/javax.servlet.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/javax.jms.jar!/" />
+      <root url="jar://$USER_HOME$/2021/kosta/oracle/ojdbc6_g.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

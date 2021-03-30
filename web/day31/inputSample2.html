@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="data:;base64,iVORw0KGgo=">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="register2.jsp">
+    <input type="date">
+    <input type="time">
+    <input type="datetime-local">
+    <input type="month">
+    <input type="week">
+    <input type="email" name="email" placeholder="viadm@naver.com"><br>
+    <input type="tel" name="telephone" pattern="[01]{3}-[0-9]{4}-[0-9]{4}"><br>
+    <input type="url" name="url"><br>
+    <!-- 입력양식 숫자 ... 서버에서 읽으면 문자 -->
+    <input type="number" name="age">나이
+    <input type="submit" value="서버전송">
+
+    <input type="range" list="steplist" min="0" max="100" step="2" name="score" >
+    <datalist id="steplist">
+        <option>0</option>
+        <option>25</option>
+        <option>50</option>
+        <option>75</option>
+        <option>100</option>
+    </datalist>
+
+    <input type="color">
+
+    <input type="search" autofocus><br>
+    <details>
+        <summary>사용자 정보 상세보기</summary>
+        <ul>
+            <li>aa1</li>
+            <li>aa2</li>
+            <li>aa3</li>
+            <li>aa4</li>
+            <li>aa5</li>
+        </ul>
+    </details>
+</form>
+</body>
+</html>
