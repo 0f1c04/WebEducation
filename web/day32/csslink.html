@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="data:;base64,iVORw0KGgo=">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="css/external.css">
+    <style>
+        /* 외부의 style 연결 */
+        @import url("css/external2.css");
+        h1 {
+            background-color: orange !important;
+        }
+        /* external < internal < inline < !important */
+    </style>
+</head>
+<body>
+<h1 style="background-color: skyblue">CSS 연결방법 3가지</h1>
+<p>1. 내부 CSS 사용</p>
+<p>2. 외부 CSS 사용 - 2가지(link, @import)</p>
+<p style="color:red;">3. inline CSS 사용</p>
+</body>
+</html>

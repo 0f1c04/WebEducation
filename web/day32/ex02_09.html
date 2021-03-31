@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <style>
+        .header h3 {
+            color: red;
+        }
+
+        .footer > h3 {
+            color: blue;
+        }
+
+        ul > li {
+            background-color: green;
+        }
+
+		div li {
+			color: red;
+			list-style: none;
+		}
+
+		/* ~: 모든 형제 */
+		h3~div {
+			border: 1px solid gray;
+		}
+		h3~p {
+			border: 1px solid red;
+		}
+		/* +: 바로 다음 형제 */
+		h3+div {
+			border: 1px solid pink;
+		}
+
+    </style>
+
+</head>
+<body>
+<div>
+	<ul>
+		<li>HTML5</li>
+		<li>CSS3</li>
+		<li>JavaScript</li>
+		<li>JavaScript-jQuery</li>
+		<li>JavaScript-node.js</li>
+	</ul>
+</div>
+
+<div class="header">
+    <h3>test1...자식</h3>
+    <div class="hea">
+        <h3>test2...후손</h3>
+    </div>
+	<div class="hea">
+		<h3>test2...후손</h3>
+	</div>
+	<p>h3, div, p 형제관계</p>
+</div>
+
+<div class="footer">
+    <h3>test3...자식</h3>
+    <div class="foo">
+        <h3>test4...후손</h3>
+    </div>
+	<div class="foo">
+		<h3
+	</div>
+	<p>h3, div, p 형제관계</p>
+</div>
+</body>
+</html>
