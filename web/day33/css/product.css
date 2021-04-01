@@ -1,0 +1,21 @@
+/*#col2 {*/
+/*    width: 100px;*/
+/*    background-color: skyblue;*/
+/*}*/
+
+/*#col3 {*/
+/*    width: 200px;*/
+/*    background-color: yellow;*/
+/*}*/
+
+tr:nth-child(even) {
+    background-color: lightgreen;
+}
+
+tr:nth-child(odd) {
+    background-color: lightgray;
+}
+
+thead tr th {
+    background-color: yellow;
+}

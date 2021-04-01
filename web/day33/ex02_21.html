@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <style>
+        div {
+			width: 450px;
+			border: thin ridge teal;
+            border-radius: 20px;
+			padding: 30px;
+			margin-top: 50px;
+			margin-bottom: 50px;
+            /*background-color: darkgray;*/
+            /*color: white;*/
+            /*width: 450px;*/
+            /*padding: 30px;*/
+            /*border: 20px solid teal;*/
+            /*margin: 50px;*/
+        }
+
+		/* default: content-box width는 content의 사이즈 */
+		div#aa {
+			box-sizing: content-box;
+            box-shadow:2px -2px 5px 0px; /* 오른쪽 윗부분에 그림자 */
+		}
+		/* border-box: width = content + border * 2 + padding * 2 */
+		div#bb {
+			box-sizing: border-box;
+            box-shadow:5px 5px 15px 5px blue; /* 오른쪽 아랫부분에 파란색 그림자 */
+		}
+
+    </style>
+</head>
+<body>
+<div id="aa">Alice in Wonderland<br><br>
+    When Alice follows the White Rabbit down a rabbit hole, she finds herself in a land where she can change her size.
+    She meets a Duchess with a pig for a baby, a Cook that throws spoons, a wise but mad Cheshire cat, the March Hare,
+    Mad Hatter and a Dormouse. A Caterpillar shows her how to adjust her height by eating from the right and left sides
+    of a mushroom.
+</div>
+<div id="bb">Alice in Wonderland<br><br>
+	When Alice follows the White Rabbit down a rabbit hole, she finds herself in a land where she can change her size.
+	She meets a Duchess with a pig for a baby, a Cook that throws spoons, a wise but mad Cheshire cat, the March Hare,
+	Mad Hatter and a Dormouse. A Caterpillar shows her how to adjust her height by eating from the right and left sides
+	of a mushroom.
+</div>
+</body>
+</html>
