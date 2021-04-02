@@ -1,0 +1,22 @@
+@keyframes focus {
+    0% {
+        letter-spacing: 1em;
+        transform: translateZ(300px);
+        filter: blur(12px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateZ(12px);
+        filter: blur(0);
+        opacity: 1;
+    }
+}
+
+body {
+    padding: 100px;
+}
+
+h1 {
+    text-align: center;
+    animation: focus 1s both;
+}

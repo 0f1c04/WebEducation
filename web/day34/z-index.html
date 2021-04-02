@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        img {
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            z-index: 1;
+        }
+        h1, p {
+            z-index: 2;
+        }
+
+        h2 {
+            width: 100px;
+            height: 100px;
+        }
+
+        #box1 {
+            position: relative;
+            background-color: green;
+            z-index: 2;
+            top: 20px;
+        }
+
+        #box2 {
+            position: relative;
+            top: -20px;
+            left: 20px;
+            background-color: orange;
+            z-index: 1;
+        }
+
+        #box3 {
+            position: relative;
+            top: -50px;
+            left: 30px;
+            background-color: blue;
+            z-index: 10;
+        }
+    </style>
+</head>
+<body>
+
+<h1>The z-index Property</h1>
+
+<img src="image/w3css.gif" width="100" height="140">
+
+<p>Because the image has a z-index of -1, it will be placed behind the heading.</p>
+
+<h2 id="box1"> </h2>
+<h2 id="box2"> </h2>
+<h2 id="box3"> </h2>
+
+</body>
+</html>
+
