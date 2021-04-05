@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        //호이스팅 단계: var를 먼저 실행
+        a = 10;
+        document.write(a + "<br>");
+        document.write(b + "<br>"); //undefined
+        var b = 20;
+        document.write(b + "<br>");
+    </script>
+
+    <script>
+        for(i=1; i<=5; i++) { //글로벌, 호이스팅 x
+            document.write(i);
+        }
+        document.write("<h1>" + i + "</h1>");
+
+        for(var j=1; j<=5; j++) { //var: 선언후 글로벌, 호이스팅 o
+            document.write(j);
+        }
+        document.write("<h1>" + j + "</h1>");
+
+        for(let k=1; k<=5; k++) { //let: 블럭내에서 유효
+            document.write(k);
+        }
+        document.write("<h1>" + k + "</h1>"); //not defined
+    </script>
+
+</head>
+<body>
+
+<h1>JavaScript type</h1>
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        //callback 함수 ... 함수호출은 내가 하지 않고 나는 함수정의만 한다. 호출은 받은쪽에서 한다.
+        window.onload = function () {
+            a = document.getElementById("op").value;
+            //alert(a);
+            btn1.onclick = execute;
+        };
+
+        function execute() {
+            var op = document.getElementById("op").value;
+            var su1 = Number(document.getElementById("su1").value);
+            var su2 = Number(document.getElementById("su2").value);
+            var result = 0;
+            if (op === "+") result = su1 + su2;
+            else if (op === "-") result = su1 - su2;
+            else if (op === "/") result = su1 / su2;
+            else if (op === "*") result = su1 * su2;
+            else if (op === "%") result = su1 % su2;
+            document.getElementById("result").value = result;
+        }
+    </script>
+</head>
+<body>
+<h1>사칙연산 수행하기</h1>
+<hr>
+<input type="number" id="su1" value="10">
+<select id="op">
+    <option>+</option>
+    <option>-</option>
+    <option>/</option>
+    <option>*</option>
+    <option value="%">%</option>
+</select>
+<input type="number" id="su2" value="20">
+<input type="button" value="연산" onclick="execute();">
+<input type="number" id="result" readonly="readonly">
+</body>
+</html>

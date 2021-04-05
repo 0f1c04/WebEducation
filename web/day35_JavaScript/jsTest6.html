@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        a = 10;
+        b = "10";
+        c = "10";
+        document.write(a == b); //value 비교
+        document.write("<br>");
+        document.write(a === b); //type, value 모두 비교
+        document.write("<br>");
+        document.write(c === b); //type, value 모두 비교
+        document.write("<br>");
+        document.write("<br>");
+
+        document.write(true + 20);
+        document.write("<br>");
+        document.write(false + 20);
+        document.write("<br>");
+        document.write("<br>");
+
+        document.write(30 > 20 > 10); //불가능
+        document.write("<br>");
+        document.write(30 > 20 && 20 > 10); //가능
+        document.write("<br>");
+        document.write("<br>");
+
+        a = 10; b = 20;
+        document.write(a > b && ++a > 10); //&&: 앞 결과가 거짓이면 뒷 문장 수행x
+        document.write("<br>");
+        document.write(a);
+        document.write("<br>");
+        document.write("<br>");
+
+        document.write(a < b || ++a > 10); //||: 앞 결과가 참이면 뒷 문장 수행x
+        document.write("<br>");
+        document.write(a);
+        document.write("<br>");
+
+        function call() {
+        var s =
+            `<ul>
+                <li>HTML5</li>
+                <li>CSS3</li>
+                <li>JavaScript</li>
+            </ul>`;
+        document.getElementById("here").innerHTML = s;
+        }
+    </script>
+</head>
+<body>
+<button onclick="call();">클릭</button>
+<hr>
+<div id="here"></div>
+
+</body>
+</html>

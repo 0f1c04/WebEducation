@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+            btn1.onclick = call1;
+            btn2.onclick = call2;
+            btn3.onclick = call3;
+            btn4.onclick = call4;
+            btn5.onclick = call5;
+            btn6.onclick = call6;
+            btn7.onclick = call7;
+        };
+
+        function call1() {
+            let num = prompt("숫자를 입력하세요");
+            if (num < 0) document.getElementById("result").innerHTML = `${num}은 음수입니다.`
+            else if (num > 0) document.getElementById("result").innerHTML = `${num}은 양수입니다.`
+            else document.getElementById("result").innerHTML = `${num}은 0입니다.`
+        }
+
+        function call2() {
+            let num = prompt("숫자를 입력하세요");
+            if (num % 2) result.innerHTML = `${num}은 홀수입니다.`
+            else result.innerHTML = `${num}은 짝수입니다.`
+        }
+
+        function call3() {
+            let nums = prompt("숫자를 입력하세요(100 100 100)");
+            let arr = nums.split(" ");
+            let total = 0;
+            for (let i in arr) {
+                total += parseInt(arr[i]);
+            }
+            let avg = total / arr.length;
+
+            let grade = "가";
+            if (avg >= 90) grade = "수";
+            else if (avg >= 80) grade = "양";
+            else if (avg >= 70) grade = "미";
+            else if (avg >= 60) grade = "양";
+
+            result.innerHTML = avg + " " + grade;
+        }
+
+        function call4() {
+            let arr = ["바나나", "오렌지", "사과", "참외"];
+            result.innerHTML = "";
+            for (let i in arr) {
+                result.innerHTML += arr[i] + "<br>";
+            }
+
+            for (let i = 0; i < arr.length; i++) {
+                result.innerHTML += arr[i] + "<br>";
+            }
+
+        }
+
+        function call5() {
+            let nums = prompt("숫자를 입력하세요(100 100 100)");
+            let arr = nums.split(" ");
+            let total = 0;
+            for (let i in arr) {
+                total += parseInt(arr[i]);
+            }
+            let avg = total / arr.length;
+
+            let grade = "가";
+            switch (Math.floor(avg / 10)) {
+                case 10:
+                case 9: grade = "수"; break;
+                case 8: grade = "우"; break;
+                case 7: grade = "미"; break;
+                case 6: grade = "양";
+            }
+
+            result.innerHTML = avg + " " + grade;
+        }
+
+        function call6(){
+            let memNum = prompt("입장객을 입력하세요", "");
+            let colNum = prompt("한줄에 몇명앉나요?", "");
+            //ceil : 무조건 반올림
+            let rowNum = Math.ceil(memNum/colNum);
+            let num = 0;
+            let s = "<table border=1>";
+            for(let i=0; i<rowNum; i++){
+                s += "<tr>";
+                for(let j=1; j<=colNum; j++){
+                    num++;
+                    if(Number(num) == Number(memNum)+1) break;
+                    s += "<td>"+num+"</td>";
+                }
+                s += "</tr>";
+            }
+            s += "</table>";
+            result.innerHTML = s;
+        }
+
+        function call7() {
+            let memNum = document.getElementById("memNum").value;
+            let colNum = document.getElementById("colNum").value;
+            //ceil : 무조건 반올림
+            let rowNum = Math.ceil(memNum/colNum);
+            let num = 0;
+            let s = "<table border=1>";
+            for(let i=0; i<rowNum; i++){
+                s += "<tr>";
+                for(let j=1; j<=colNum; j++){
+                    num++;
+                    if(Number(num) == Number(memNum)+1) break;
+                    s += "<td>"+num+"</td>";
+                }
+                s += "</tr>";
+            }
+            s += "</table>";
+            result.innerHTML = s;
+        }
+    </script>
+</head>
+<body>
+<h1>숫자를 입력하세요.</h1>
+<button id="btn1">양수, 음수, 0을 구분</button>
+<button id="btn2">홀수, 짝수를 구분</button>
+<button id="btn3">수우미양가 구분</button>
+<button id="btn4">배열연습</button>
+<button id="btn5">수우미양가 스위치</button>
+<button id="btn6">자리 배치</button><br>
+
+입장객 수: <input id="memNum"><br>
+한 줄에 몇명: <input id="colNum">
+<input type="button" value="확인" id="btn7">
+
+<hr>
+<div id="result"></div>
+</body>
+</html>

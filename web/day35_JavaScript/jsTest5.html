@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        //document.write(a + "<br>"); // not defined
+        document.write(b + "<br>"); // undefined
+        //document.write(c + "<br>"); // Cannot access 'c' before initialization
+
+        a = 10;
+        var b = 20;
+        let c = 30;
+
+        document.write(a + "<br>");
+        document.write(b + "<br>");
+        document.write(c + "<br>");
+    </script>
+
+    <script>
+        document.write("a는 undefined<br>");
+        var a = "자바스크립트";
+        document.write("a=" + a + "<br><br>");
+
+        f1();
+        f2();
+
+        function f1() {
+            document.write("함수1");
+        }
+        function f2() {
+            document.write("함수2");
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

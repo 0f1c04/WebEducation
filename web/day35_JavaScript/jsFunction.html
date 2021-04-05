@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () { //익명함수 ... 이벤트 핸들러
+            btn1.onclick = f1; //callback 함수
+            btn2.onclick = f2;
+            btn3.onclick = f3;
+            btn4.onclick = f4;
+            btn5.onclick = f5;
+            btn6.onclick = f6;
+            btn7.onclick = f7;
+        };
+        
+        function f1() { //선언적 함수
+            here.innerHTML = `
+                <ul>
+                    <li>number</li>
+                    <li>string</li>
+                    <li>boolean</li>
+                    <li>object</li>
+                    <li>function</li>
+                    <li>undefined</li>
+                </ul>
+                `;
+        }
+
+        function f2() { //선언적 함수
+            here.innerHTML += "<ul><li>1.선언적함수</li><li>2.익명 함수</li></ul>";
+        }
+
+        function f3() {
+            var currentDate = new Date();
+            var year = currentDate.getFullYear();
+            var birthYear = Number(prompt("태어난 연도를 입력하세요. (YYYY)", ""));
+            var age = year - birthYear + 1;
+            here.innerHTML += `당신의 나이는 ${age}살 입니다.`;
+        }
+
+        var cnt = 0;
+        function f4() {
+            cnt++;
+            here.innerHTML = `당신은 ${cnt}번째 방문자입니다.`;
+        }
+
+        function f5() {
+            var a = 10 + "문자가 숫자보다 우선순위가 높다";
+            document.getElementById("here").innerHTML = `${a} --> ${typeof(a)}`;
+
+            var a = true + 10;
+            document.getElementById("here").innerHTML = `<br>${a} --> ${typeof(a)}`;
+
+            document.getElementById("here").innerHTML = `<hr style="height:20px;">${f4} --> ${typeof(f4)}`;
+        }
+
+        function f6() {
+            if(confirm("계속?")) {
+                here.innerHTML = "찬성"
+            } else {
+                here.innerHTML = "반대"
+            }
+        }
+
+        function f7() { //Not a number : NaN
+            var a = "-100";
+            here.innerHTML = Math.sqrt(a);
+
+            here.innerHTML += "<br>" + Boolean(0);
+            here.innerHTML += "<br>" + Boolean('');
+            here.innerHTML += "<br>" + Boolean(NaN);
+            here.innerHTML += "<br>" + Boolean(null);
+            here.innerHTML += "<br>" + Boolean(undefined);
+            here.innerHTML += "<br>" + Boolean(10);
+            here.innerHTML += "<br>" + Boolean("자바스크립트");
+        }
+    </script>
+</head>
+<body>
+<button id="btn1">변수종류</button>
+<button id="btn2">함수종류</button>
+<button id="btn3">나이계산(p.466)</button>
+<button id="btn4">증감연산자</button>
+<button id="btn5">타입우선순위</button>
+<button id="btn6">confirm</button>
+<button id="btn7">NaN</button>
+<hr>
+<div id="here"></div>
+</body>
+</html>
