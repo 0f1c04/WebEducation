@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <style>
+        header h1 {
+            background-color: lightyellow;
+        }
+
+        header h1:hover {
+            background-color: lightgreen;
+        }
+
+        #here {
+            border: 1px solid green;
+            height: 300px;
+            margin: 10px;
+        }
+    </style>
+    <script>
+        //사용자 정의함수: 1. 이름있는함수(선언적함수)
+        function call() {
+            alert("사용자 정의함수 > 선언적함수");
+            //BOM(Browser Object Model)
+            location.href = "../_day06/lab2.html";
+        }
+
+        //2. 이름없는함수(익명함수), 이벤트핸들러(이벤트 발생시 자동실행)
+        window.onload = function() {
+            //DOM(Document Object Model)
+            var obj = document.getElementById("btn1");
+            obj.onclick = call2;
+            btn2.onclick = call3;
+            btn3.onclick = f3;
+            btn4.onclick = f4;
+            btn5.onclick = f5;
+            btn6.onclick = f6;
+            btn7.onclick = f7;
+        };
+
+        function call2() {
+            let a = 10, b = "문자!", c = 10>20;
+            let d = {}, e = function() {}, f;
+
+            let s = `
+         <ol>
+            <li>${a} > ${typeof(a)}</li>
+            <li>${b} > ${typeof(b)}</li>
+            <li>${c} > ${typeof(c)}</li>
+            <li>${d} > ${typeof(d)}</li>
+            <li>${e} > ${typeof(e)}</li>
+            <li>${f} > ${typeof(f)}</li>
+         </ol>`;
+            here.innerHTML = s;
+        }
+
+        function call3(){
+            let genders = document.getElementsByName("gender");
+            var chk, val="no check";
+            for(let i=0; i<genders.length; i++){
+                chk = genders[i].checked;
+                if(chk){
+                    val = genders[i].value;
+                }
+            }
+            here.innerHTML = `${val}이 선택되었습니다.`;
+
+            let season = document.getElementsByName("season");
+            for(let i=0; i<season.length; i++){
+                chk = season[i].checked;
+                if(chk){
+                    val = season[i].value;
+                }
+            }
+            here.innerHTML += `<br>${val}이 선택되었습니다.`;
+        }
+
+        function f3(){
+            //배열 > 값 여러개 묶음
+            var arr = [100,"JAVAScript",true,{},[1,2,3],call3, function(){a=10;alert(a);}];
+            arr.push(200);//추가가능
+            let s = "";
+            for(let i=0; i<arr.length; i++){
+                s += `${arr[i]} --> ${typeof(arr[i])}<br>`;
+                if(typeof(arr[i])=='function'){
+                    arr[i]();
+                }
+            }
+            here.innerHTML += s;
+        }
+
+        function f4() {
+            var arr = [100,"JAVAScript",true,{},[1,2,3],call3, function(){a=10;alert(a);}];
+            here.innerHTML = arr;
+        }
+
+        function f5() {
+            var currentTime = new Date().getTime();
+            //1초동안 loop
+            var value = 0;
+            while(new Date().getTime() < currentTime + 1000){
+                value++;
+                console.log(value);
+            }
+            here.innerHTML = "1초동안 누적한 값 : " + value;
+        }
+
+        function f6() {
+            let star = "";
+            for(let i=1; i<=10; i++){
+                for(let j=1; j<=i; j++){
+                    star+="*";
+                }
+                star+="<br>";
+            }
+            here.innerHTML = star;
+        }
+
+        function f6() {
+            let star = "";
+            for (i = 1; i <= 10; i++) {
+                for (k = 1; k <= 10 - i; k++ ) {
+                    star += "&nbsp";
+                }
+                for (j= 1; j <= i; j++) {
+                    star += "*";
+                }
+                star += "<br>";
+            }
+
+            here.innerHTML = star;
+        }
+
+        var global=100;
+        function f7() {
+            /* here.innerHTML = "s = " + s;
+            here.innerHTML += "<br>i = " + s;
+            here.innerHTML += "<br>j = " + s;
+            here.innerHTML += "<br>k = " + s; */
+        }
+    </script>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>JavaScript연습</h1>
+        <nav>
+            <ul>
+                <li><a href="../_day06/lab2.html">연습1</a></li>
+                <li><a href="javascript:call();">연습2</a></li>
+                <li><a href="../_day06/lab2.html">연습3</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <button id="btn1">데이터타입(6가지)</button><br><br>
+            <fieldset>
+                <legend>성별선택</legend>
+                <input type="radio" name="gender" checked value="man">남자
+                <input type="radio" name="gender" value="girl">여자
+            </fieldset>
+            <fieldset>
+                <legend>계절선택</legend>
+                <input type="radio" name="season" checked value="spring">봄
+                <input type="radio" name="season" value="summer">여름
+                <input type="radio" name="season" value="autumn">가을
+                <input type="radio" name="season" value="winter">겨울
+            </fieldset>
+            <button id="btn2">조건문(if, switch)</button><br><br>
+            <button id="btn3">반복문(for, while)</button>
+            <button id="btn4">배열</button>
+            <button id="btn5">while</button>
+            <button id="btn6">피라미드</button>
+            <button id="btn7">global변수</button>
+        </section>
+        <section></section>
+        <article id="here"></article>
+        <aside></aside>
+    </main>
+    <footer> </footer>
+</div>
+</body>
+</html>
