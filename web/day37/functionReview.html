@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        var a= 10;
+        b = 20;
+
+        for(i = 1; i <= 5; i++) {
+            console.log("i=" + i);
+        }
+
+        for(var j = 1; j <= 5; j++) {
+            console.log("j=" + j);
+        }
+
+        alert(i + j);
+        // 함수밖에서 var 선언한 변수는 무조건 global
+        // 선언안하고 사용한 벼녀수는 무조건 global
+
+        function call() {
+            for(i2 = 1; i2 <= 5; i2++) {
+                console.log("i=" + i);
+            }
+
+            for(var j2 = 1; j2 <= 5; j2++) {
+                console.log("j=" + j);
+            }
+        }
+        call();
+        alert(j2);
+    </script>
+</head>
+<body>
+<h1>Function 학습</h1>
+</body>
+</html>

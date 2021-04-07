@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #here {
+            background-color: yellow;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/underscore@1.12.1/underscore-min.js"></script>
+    <script>
+        window.onload = function () {
+            btn1.onclick = call1;
+            btn2.onclick = call2;
+            btn3.onclick = call3;
+            btn4.onclick = call4;
+            btn5.onclick = call5;
+            btn6.onclick = call6;
+            btn7.onclick = call7;
+            btn8.onclick = call8;
+            btn9.onclick = call9;
+            btn10.onclick = call10;
+        }
+
+        function call1() {
+            let obj = {
+                "name": "임덕배",
+                age: 20,
+                age2: 30,
+                "군필 여부": true,
+                study: function () {
+                    alert("열심히 공부");
+                },
+                자기소개: {"학교": "서울", "전공": "컴공"},
+                score: [1, 2, 3, 4, 5]
+            };
+
+            here.innerHTML = "이름은 " + obj["name"];
+
+            here.innerHTML += "<br>나이는 " + obj.age;
+            let aa = "age2";
+            here.innerHTML += "<br>나이는 " + obj[aa];
+
+            here.innerHTML += "<br>군대는 " + obj["군필 여부"];
+
+            here.style["background-color"] = "pink";
+
+            here.innerHTML += "<br>study는 " + obj["study"];
+            obj["study"]();
+
+            here.innerHTML += "<br>학교는 " + obj.자기소개.학교;
+
+            here.innerHTML += "<br>점수는 " + obj.score[4];
+        }
+
+        function call2() {
+
+        }
+
+        function call3() {
+
+        }
+
+        function call4() {
+
+        }
+
+        function call5() {
+            //배열 + 객체
+            var arr = [];
+            arr.push({name: "김길동", kor: 100, eng: 90, math: 80});
+            arr.push({name: "이길동", kor: 89, eng: 88, math: 30});
+            arr.push({name: "최길동", kor: 56, eng: 34, math: 90});
+            arr.push({name: "박길동", kor: 90, eng: 100, math: 67});
+            arr.push({name: "홍길동", kor: 76, eng: 92, math: 78});
+
+            //이름과 총점을 출력
+            for (var i = 0; i < arr.length; i++) {
+                here.innerHTML += arr[i].name + (arr[i].kor + arr[i].eng + arr[i].math) + "<br>";
+            }
+            for (var i in arr) {
+                var total = 0;
+                for (var key in arr[i]) {
+                    //here.innerHTML += "<br>" + arr[i][key];
+                    if (key == 'name') continue;
+                    total += arr[i][key];
+                }
+                here.innerHTML += "<br>" + arr[i]["name"] + "==>" + total;
+
+            }
+        };
+
+        function call6() {
+            let arr = [];
+            arr.push(makePerson("임덕배1", 100, 90, 80));
+            arr.push(makePerson("임덕배2", 100, 20, 30));
+            arr.push(makePerson("임덕배3", 100, 60, 80));
+            arr.push(makePerson("임덕배4", 30, 90, 90));
+            arr.push(makePerson("임덕배5", 20, 90, 10));
+
+            for (let i in arr) {
+                here.innerHTML += "<br>" + arr[i];
+            }
+        };
+
+        function makePerson(name, kor, eng, math) {
+            let obj = {
+                "name": name,
+                "kor": kor,
+                "eng": eng,
+                "math": math,
+                getSum: function () {
+                    return this.kor + this.eng + this.math;
+                },
+                getAvg: function () {
+                    return this.getSum() / 3;
+                },
+                toString: function () {
+                    return this.name + "의 평균점수: " + this.getAvg();
+                }
+            };
+            return obj;
+        }
+
+        function call7() {
+            let obj1 = {name: "홍"};
+            var obj2 = _.clone(obj1);
+            here.innerHTML += "<br> obj1=" + obj1.name + " obj2=" + obj2.name;
+
+            let arr = [1, 2, 3, 4, 5];
+            let arr2 = _.clone(arr);
+            arr[0] = 99;
+            here.innerHTML += "<br>" + arr + "<br>" + arr2;
+        }
+
+        function call8() {
+            //json (JavaScript Object Notation)
+            //JavaScript Object -> String
+            let obj1 = {name: "홍", age: 30, major: "컴공"};
+            here.innerHTML += "<br>" + JSON.stringify(obj1);
+
+            let s = '{"name":"홍", "age":30, "major":"컴공"}';
+            //String -> Object (parsing)
+            let obj2 = JSON.parse(s);
+            here.innerHTML += "<br>" + obj2.name + obj2.major;
+        }
+
+        function call9() {
+            let arr = [];
+            arr.push(new Student("임덕배1", 100, 90, 80));
+            arr.push(new Student("임덕배2", 100, 20, 30));
+            arr.push(new Student("임덕배3", 100, 60, 80));
+            arr.push(new Student("임덕배4", 30, 90, 90));
+            arr.push(new Student("임덕배5", 20, 90, 10));
+
+            Student.prototype.getSum = function () {
+                return this.kor + this.eng + this.math;
+            };
+            Student.prototype.getAvg = function () {
+                return this.getSum() / 3;
+            };
+            Student.prototype.toString = function () {
+                return this.getName() + ">>" + this.getAvg();
+            }
+
+            for (let i in arr) {
+                here.innerHTML += "<br>" + arr[i].getName() + arr[i];
+            }
+        }
+
+        function Student(name, kor, eng, math) {
+            var name = name;
+            this.kor = kor;
+            this.eng = eng;
+            this.math = math;
+            this.getName = function () {
+                return name;
+            };
+        }
+
+        function call10() {
+            Rectangle.prototype.getArea = function () {
+                return this.width * this.height;
+            }
+            Square.prototype = Rectangle.prototype;
+            Square.prototype.constructor = Square;
+
+            let a = new Square(10);
+            alert(a.getArea());
+        }
+
+        // 부모
+        function Rectangle(width, height) {
+            this.width = width;
+            this.height = height;
+        }
+
+        // 자식
+        function Square(length) {
+            this.base = Rectangle;
+            this.base(length, length); //java의 super() 같은거
+        }
+    </script>
+</head>
+<body>
+<button id="btn1">object 사용법1</button>
+<button id="btn2">object 사용법2</button>
+<button id="btn3">object 사용법3</button>
+<button id="btn4">object 사용법4</button>
+<button id="btn5">object 사용법5</button>
+<button id="btn6">object 사용법6</button>
+<button id="btn7">복사(값,주소)</button>
+<button id="btn8">json</button>
+<button id="btn9">생성자함수로 객체만들기</button>
+<button id="btn10">상속</button>
+<hr>
+<div id="here">여기</div>
+</body>
+</html>

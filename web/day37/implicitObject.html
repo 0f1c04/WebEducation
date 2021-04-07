@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <meta charset="UTF-8">
+    <title>Title</title>
+<script>
+    window.onload = function () {
+        btn1.onclick = function () {
+            // Java는 기본형, wrapper class
+            // JavaScript는 기본형도 기능을 가지고 있음
+            // 차이점은 기본형은 메소드 추가가 불가능하다. 객체형은 가능
+            let num1 = 10;
+            let num2 = new Number(20);
+            here.innerHTML = "기본형: " + typeof(num1) + num1.toString(2);
+            here.innerHTML += "<br>Number 객체형: " + typeof(num2) + num2.toString(2);
+            // num1.print1 = function () {
+            //     here.innerHTML += "기본형 메소드 추가";
+            // };
+            num2.print2 = function () {
+                here.innerHTML += "<br>Number 객체형 메소드 추가";
+            };
+
+            // num1.print1();
+            num2.print2();
+        };
+
+        btn2.onclick = function () {
+            let s = "KOSTA";
+            here.innerHTML = s.bold();
+            here.innerHTML += s.italics();
+        };
+
+        btn3.onclick = function () {
+            let arr1 = [1,2,3,10,53,23];
+            let arr2 = new Array(4,5,6);
+            let arr3 = arr1.concat(arr2);
+            here.innerHTML = arr3;
+
+            here.innerHTML += "<br>" + arr3.join("--");
+
+            //sort: 원본을 변경하지 않는다.
+            arr3.sort();
+            here.innerHTML += "<br>" + arr3.sort();
+
+            //sort 방법을 전달
+            here.innerHTML += "<br>" + arr3.sort(function (a,b) {
+                return a-b;
+            });
+        };
+
+        btn4.onclick = function () {
+            let arr = [];
+            arr.push(new Student("임덕배1", 100, 90, 80));
+            arr.push(new Student("임덕배2", 100, 20, 30));
+            arr.push(new Student("임덕배3", 100, 60, 80));
+            arr.push(new Student("임덕배4", 30, 90, 90));
+            arr.push(new Student("임덕배5", 20, 90, 10));
+
+            Student.prototype.getSum = function () {
+                return this.kor + this.eng + this.math;
+            };
+            Student.prototype.getAvg = function () {
+                return this.getSum() / 3;
+            };
+            Student.prototype.toString = function () {
+                return this.getName() + ">>" + this.getAvg();
+            }
+
+            let arr2 = arr.sort(function (a, b) {
+                return b.getAvg() - a.getAvg();
+            })
+
+            for(let s in arr2) {
+                here.innerHTML += "<br>" + arr2[s];
+            }
+            here.innerHTML += "<br><hr>";
+            arr2.reverse().forEach(function (elt, i, array) {
+                here.innerHTML += "<br>" + elt;
+            })
+        };
+
+        function Student(name, kor, eng, math) {
+            var name = name;
+            this.kor = kor;
+            this.eng = eng;
+            this.math = math;
+            this.getName = function () {
+                return name;
+            };
+        }
+    }
+</script>
+</head>
+<body>
+<button id="btn1">기본타입과 객체타입비교</button>
+<button id="btn2">String</button>
+<button id="btn3">Array</button>
+<button id="btn4">ObjectArray의 Sort</button>
+<hr>
+<div id="here">여기</div>
+</body>
+</html>

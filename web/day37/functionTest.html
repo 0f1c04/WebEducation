@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+            document.getElementById("btn1").onclick = function () {
+                here.innerHTML = this.innerText + "<br>";
+                let url = "https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=0&ie=utf8&query=제주여행";
+                let url2 = encodeURIComponent(url);
+                here.innerHTML += "인코딩: <br>" + url2;
+
+                let url3 = decodeURIComponent(url2);
+                here.innerHTML += "디코딩: <br>" + url3;
+            };
+
+            document.querySelector("#btn2").onclick = function () {
+                here.innerHTML = this.innerText + "<br>";
+                let s = "a=10; b=20; c=a+b; alert(c)"
+                eval(s);
+            }
+
+            btn3.onclick = function () {
+                here.innerHTML = this.innerText + "<br>";
+                let a = 10;
+                let b = "aa";
+                here.innerHTML += isNaN(a / b) ? "게산불가" : "계산가능";
+                here.innerHTML += "<br>" + (isNaN(NaN) == 1);
+            }
+
+            document.querySelector("button:nth-of-type(4)").onclick = function () {
+                here.innerHTML = this.innerText + "<br>";
+                let a = "100점";
+                here.innerHTML += "<br>" + (10 + Number(a));
+                here.innerHTML += "<br>" + (10 + parseInt(a));
+            }
+
+            document.querySelector("button:nth-of-type(5)").onclick = function () {
+                here.innerHTML = this.innerText + "<br>";
+                call(10, 20, 30);
+                call();
+                call(100);
+                call(100, 200);
+            };
+
+            btn6.onclick = function () {
+                let arr = [10, 20, 30, 40, 50];
+                arr.forEach(function (item, i) {
+                    here.innerHTML += "<br>" + i + "번째: " + item + arguments[0];
+                })
+            };
+
+            btn7.onclick = function () {
+                //call2(1,2);
+
+                let arr = [2, 3];
+                let arr2 = [10, 20, 30];
+                //call2(30, 40, ...arr2); //펼쳐져서전달
+                call2(...arr, ...arr2);
+            };
+        };
+        
+        function call2() {
+            here.innerHTML += "<br>" + (arguments[0] + arguments[1]);
+        };
+        function call2(a, b, ...nums) {
+            here.innerHTML += "<br>전개연산자: " + (a + b + nums[0] + nums[1] + nums[2]);
+        };
+
+        function call(a, b, c) {
+            if (!a) a = 1;
+            if (!b) b = 2;
+            if (!c) c = 3;
+            here.innerHTML += "<br>" + (a + b + c);
+        };
+
+        function call(a, b, c) {
+            a = a || 10;
+            b = b || 20;
+            c = c || 30;
+            here.innerHTML += "<br>" + (a + b + c);
+        };
+
+        function call(a = 1, b = 200, c = 300) {
+            here.innerHTML += "<br>" + (a + b + c);
+        };
+
+    </script>
+</head>
+<body>
+<button id="btn1">uriEncoding</button>
+<button id="btn2">eval</button>
+<button id="btn3">isNaN</button>
+<button id="btn4">parseInt</button>
+<button id="btn5">기본매개변수</button>
+<button id="btn6">foreach</button>
+<button id="btn7">전개연산자</button>
+<hr>
+<div id="here">여기</div>
+</body>
+</html>
