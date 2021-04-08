@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+
+    <title>Title</title>
+    <script>
+        window.onload = function (ev) {
+            console.log(ev);
+            console.log(ev.type);
+
+            btn1.onclick = function (ev) {
+                console.log(ev);
+                console.log("이벤트의 타입: " + ev.type);
+                here.innerHTML += "x= " + ev.x + "<br>y= " + ev.y + "<br>";
+            };
+
+            btn2.onclick = function (ev) {
+                btn1.onclick(ev);
+            };
+
+            btn3.onclick = function () {
+                alert("버튼 3의 코드");
+            };
+
+            mytext.onkeydown = function (event) {
+                console.log(event);
+                if(event.key == "Enter") {
+                    btn3.onclick();
+                }
+            };
+
+            btn4.onclick = function () {
+                btn1.onclick = null;
+            };
+
+            function validate(obj) {
+                let val = obj.value;
+                if(val == "") {
+                    alert("필수입력입니다.");
+                    obj.focus();
+                    return false;
+                }
+                return true;
+            }
+
+            myfrm.onsubmit = function () { //default event
+                var uobj = document.querySelector("input[name='userid']");
+                if(!validate(uobj)) return false;
+
+                var uobj = document.querySelector("input[name='userpw']")
+                if(!validate(uobj)) return false;
+            };
+
+            btn5.addEventListener("click", function (e) {
+                alert("표준이벤트모델 사용하기");
+            }, false);
+
+            btn6.addEventListener("click", func);
+
+            function func() {
+                try {
+                    let arr = new Array(9999999999999999999999);
+                    alert(arr.length);
+                } catch (ex) {
+                    here.innerHTML = ex;
+                }
+            }
+        };
+    </script>
+</head>
+<body>
+<button id="btn1">이벤트객체</button>
+<button id="btn2">이벤트 강제 발생</button>
+<input type="text" id="mytext">
+<button id="btn3">이벤트 강제 발생2</button>
+<button id="btn4">이벤트 제거</button>
+<button id="btn5">표준이벤트모델</button>
+<button id="btn6">예외처리</button>
+<br><br>
+<form id="myfrm" action="LoginChk.jsp" method="get">
+    아이디:<input type="text" name="userid" value="admin"><br>
+    비밀번호:<input type="password" name="userpw" value="1234"><br>
+    <input type="submit" value="로그인">
+</form>
+
+<hr>
+<div id="here">여기<br></div>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+
+    <title>Title</title>
+    <script>
+        function call() {
+            let arr = [10, 7, 20, 2, 6, 8, 30, 5];
+            let f = function (elt, idx) {
+                here.innerHTML += "<br>" + idx + "번째: " + elt;
+            };
+            arr.forEach(f);
+        }
+
+        function call2() {
+            var arr = [10, 20, 7, 2, 16, 48, 3];
+            var f = function (elt) {
+                return elt % 2;
+            };
+            var arr2 = arr.map(f);
+            here.innerHTML = arr2;
+        }
+
+        function call3() {
+            var arr = [10, 20, 7, 2, 16, 48, 3];
+            var f = function (elt) {
+                return elt % 2 == 0;
+            };
+            var arr2 = arr.filter(f);
+            here.innerHTML = arr2;
+        }
+
+        function call4() {
+            var arr = [10, 20, 7, 2, 16, 48, 3];
+            var f = function (elt1, elt2) {
+                return elt1 - elt2; //asc sort
+            };
+            var arr2 = arr.sort(f);
+            here.innerHTML = arr2;
+        }
+
+        function call5() {
+            let d = new Date();
+            here.innerHTML = d.getFullYear() + " " + (d.getMonth() + 1);
+        }
+
+        function call6() {
+            here.innerHTML = Math.floor(Math.random() * 11); //0~10
+        }
+
+        function bomTest1() {
+            here.innerHTML = "";
+            for (let prop in window) {
+                here.innerHTML += "<br>" + window[prop];
+            }
+        }
+
+        function bomTest2() { //document 객체
+            here.innerHTML = "";
+            for (let prop in window) { //document 객체
+                here.innerHTML += "<br>" + prop + ": " + document[prop];
+            }
+        }
+
+        function bomTest3() { //screen 객체
+            here.innerHTML = "";
+            for (let prop in window) {
+                here.innerHTML += "<br>" + prop + ": " + screen[prop];
+            }
+        }
+
+        function bomTest4() { //location 객체
+            here.innerHTML = "";
+            for (let prop in window) {
+                here.innerHTML += "<br>" + prop + ": " + location[prop];
+            }
+        }
+
+        function bomTest5() { //navigator 객체
+            here.innerHTML = "";
+            for (let prop in window) {
+                here.innerHTML += "<br>" + prop + ": " + navigator[prop];
+            }
+        }
+
+        function bomTest6() { //history 객체
+            here.innerHTML = "";
+            for (let prop in window) {
+                here.innerHTML += "<br>" + prop + ": " + history[prop];
+            }
+        }
+
+    </script>
+</head>
+<body>
+<h1>Review</h1>
+<button onclick="call()">Array 객체(foreach)</button>
+<button onclick="call2()">Array 객체(map)</button>
+<button onclick="call3()">Array 객체(filter)</button>
+<button onclick="call4()">Array 객체(sort)</button>
+<br>
+<button onclick="call5()">Date 객체</button>
+<button onclick="call6()">Math 객체</button>
+<br>
+<h1>BOM</h1>
+<button onclick="bomTest1()">BOM 객체</button>
+<button onclick="bomTest2()">document 객체</button>
+<button onclick="bomTest3()">screen 객체</button>
+<button onclick="bomTest4()">location 객체</button>
+<button onclick="bomTest5()">navigator 객체</button>
+<button onclick="bomTest6()">history 객체</button>
+<hr>
+<div id="here">여기</div>
+</body>
+</html>

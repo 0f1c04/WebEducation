@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+
+    <title>Title</title>
+    <style>
+        * {
+            font: 17px 'Segoe UI';
+        }
+
+        table,
+        th,
+        td {
+            border: solid 1px #ddd;
+            border-collapse: collapse;
+            padding: 2px 3px;
+            text-align: center;
+        }
+
+        th {
+            font-weight: bold;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+
+            btn1.addEventListener("click", function () {
+                let xhr = new XMLHttpRequest();
+                let id = document.querySelector("input[name='userid']").value;
+                let pw = document.querySelector("input[name='userpw']").value;
+                let param = "userid=" + id + "&userpw=" + pw;
+
+                xhr.open("get", "LoginChk2.jsp?" + param, true); //true: 비동기(순서없음)
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState == 4 && xhr.status == 200) {
+                        //here.innerHTML = xhr.responseText;
+                        var obj = JSON.parse(xhr.responseText);
+                        here.innerHTML += "이름 : " + obj.fname + obj.lname;
+                        here.innerHTML += "<br>급여 : " + obj.salary;
+                        here.innerHTML += "<br>입사일 : " + obj.hire_date;
+                    }
+                };
+                xhr.send();
+            });
+
+            myfrm.onsubmit = function () { //default event
+                var uobj = document.querySelector("input[name='userid']");
+                if (!validate(uobj)) return false;
+
+                var uobj = document.querySelector("input[name='userpw']")
+                if (!validate(uobj)) return false;
+            };
+
+            function validate(obj) {
+                let val = obj.value;
+                if (val == "") {
+                    alert("필수입력입니다.");
+                    obj.focus();
+                    return false;
+                }
+                return true;
+            };
+
+            btn2.addEventListener("click", function () {
+                var url = "https://api.bithumb.com/public/ticker/BTC";
+                var xhr = new XMLHttpRequest();
+                xhr.open("get", url, true);
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState == 4 && xhr.status == 200) {
+                        //opening_price 출력
+                        var obj = JSON.parse(xhr.responseText);
+
+                        here.innerHTML = obj.data.opening_price;
+                    }
+                };
+                xhr.send();
+            });
+
+            btn3.addEventListener("click", function () {
+                var url = "https://api.bithumb.com/public/ticker/ALL";
+                var xhr = new XMLHttpRequest();
+                xhr.open("get", url, true);
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState == 4 && xhr.status == 200) {
+                        var obj = JSON.parse(xhr.responseText); // Convert JSON to array.
+
+                        let s = "<table><tr><th>종목명</th><th>시가</th><th>종가</th><th>저가</th><th>고가</th><th>거래량</th><th>거래금액</th><th>전일종가</th><th>최근 거래량</th><th>최근 거래금액</th><th>최근 변동가</th><th>최근 변동률</th><th>시간</th></tr>"
+                        for (let i in obj["data"]) {
+                            s += "<tr><td>" + i + "</td>";
+                            s += "<td>" + obj.data[i].opening_price + "</td>";
+                            s += "<td>" + obj.data[i].closing_price + "</td>";
+                            s += "<td>" + obj.data[i].min_price + "</td>";
+                            s += "<td>" + obj.data[i].max_price + "</td>";
+                            s += "<td>" + obj.data[i].units_traded + "</td>";
+                            s += "<td>" + obj.data[i].acc_trade_value + "</td>";
+                            s += "<td>" + obj.data[i].prev_closing_price + "</td>";
+                            s += "<td>" + obj.data[i].units_traded_24H + "</td>";
+                            s += "<td>" + obj.data[i].acc_trade_value_24H + "</td>";
+                            s += "<td>" + obj.data[i].fluctate_24H + "</td>";
+                            s += "<td>" + obj.data[i].fluctate_rate_24H + "</td>";
+                            s += "<td>" + obj.data[i].date + "</td></tr>";
+                        }
+                        here.innerHTML += s+ "</tabel>"
+                    }
+                };
+                xhr.send();
+            });
+
+        }
+    </script>
+</head>
+<body>
+<button id="btn1">Ajax(비동기통신)</button>
+<br><br>
+<button id="btn2">빗썸API이용하기(BTC)</button>
+<br><br>
+<button id="btn3">빗썸API이용하기(ALL)</button>
+<br><br>
+<div id='showTable'></div>
+<div id="here">여기</div>
+<hr>
+
+<form id="myfrm" action="LoginChk.jsp" method="get">
+    아이디:<input type="text" name="userid" value="100"><br>
+    비밀번호:<input type="password" name="userpw" value="1234"><br>
+    <input type="submit" value="로그인">
+</form>
+</body>
+</html>

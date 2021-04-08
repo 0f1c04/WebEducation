@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+
+    <title>Title</title>
+    <style>
+        #here {
+            width: 300px;
+            height: 300px;
+            border: 1px solid gray;
+        }
+
+        p {
+            border: 1px solid gray;
+        }
+    </style>
+    <script>
+        function call1() {
+            let t = document.createTextNode("text노드 생성");
+            var e = document.createElement("p"); //<p></p>
+            e.appendChild(t); //<p>text노드 생성</p>
+
+            let h = document.getElementById("here");
+            h.appendChild(e);
+
+            h.innerHTML += "<br><p>innerHTML로 p생성</p>"
+
+            var e = document.createElement("img"); //<img/>
+            e.src = "../source_code/16/images/doit.jpg";
+            e.width = "100";
+            e.height = "100";
+            h.appendChild(e);
+            h.innerHTML += "<img class='my' src='../source_code/16/images/doit.jpg' width='200' height='200'>";
+        }
+
+        function call2() {
+            let imgs = document.querySelectorAll(".my");
+            imgs.forEach(function (elt, i, array) {
+                elt.setAttribute("src", "../source_code/15/images/flower.jpg");
+            });
+        }
+
+        function call3() {
+            let img = document.querySelector(".my");
+            img.src = "../source_code/11/images/bear.jpg";
+        }
+
+        function call4() {
+            let buttons = document.querySelectorAll("button");
+            buttons.forEach(function (elt, i, array) {
+               here.innerHTML += "<p>" + elt.innerHTML + "</p>";
+            });
+        }
+
+        function call5() {
+            let h = document.querySelector("#here");
+            h.style.color = "red";
+            h.style.backgroundColor = "lightyellow"
+        }
+
+        function call6() {
+            let h = document.querySelector("#here");
+            let img = document.querySelector(".my");
+            h.removeChild(img);
+        }
+
+        function call7() {
+            let h = document.querySelector("#here");
+            h.parentNode.removeChild(h);
+        }
+    </script>
+</head>
+<body>
+<h1>DOM(Document Object Model)</h1>
+<button onclick="call1()">동적객체 생성</button>
+<button onclick="call2()">동적속성 변경</button>
+<button onclick="call3()">동적속성 변경</button>
+<button onclick="call4()">querySelectorAll</button>
+<button onclick="call5()">style 변경</button>
+<button onclick="call6()">동적 제거</button>
+<button onclick="call7()">동적 제거2</button>
+<hr>
+<div id="here"></div>
+</body>
+</html>
