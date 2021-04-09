@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <title>Title</title>
+    <style>
+        ul {
+            border: 1px solid gray;
+            list-style-type: none;
+            padding: 10px;
+        }
+
+        .high-light {
+            background-color: lightblue;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        window.onload = function () {
+            console.log("load 후1");
+        };
+        window.onload = function () {
+            console.log("load 후2");
+        };
+
+        $(document).ready(function () {
+            console.log("jQuery1");
+        });
+        $(document).ready(function () {
+            console.log("jQuery2");
+        });
+
+        $(function () {
+            var s = $("#here").html();
+            $("#here").html(s + "<p>jQuery1</p>");
+        });
+        $(function () {
+            var s = $("#here").html();
+            $("#here").html(s + "<p>jQuery2</p>");
+        });
+
+        $(function () {
+            $("#btn1").click(function () {
+                $("#here").html("<h1>버튼을누름!</h1>");
+            });
+        });
+
+        $(function () {
+            $("#btn2").click(function () {
+                $("#here").css("color", "red");
+                var obj = {
+                    border: "1px solid green",
+                    "background-color": "orange"
+                };
+                $("#here").css(obj);
+            });
+
+            $("#btn3").click(function () {
+                $(".active").css("color", "pink");
+            });
+
+            $("#btn4").click(function () {
+                let arr = ["바나나", "사과", "오렌지", "한라봉"];
+                let s = "";
+                $.each(arr, function (idx, item) {
+                    s += idx + "번째: " + item + "<br>";
+                });
+                $("#here").html(s);
+            });
+
+            $("#btn5").click(function () {
+                var s = "<ul>";
+                $("h1,h2").each(function (idx, item) {
+                    s += "<li>" + $(item).html() + "</li>";
+                });
+                $("#here").html(s + "</ul>")
+            });
+
+            $("#btn6").click(function () {
+                let output = "<ul>";
+                $("#mydata>p").each(function (idx, item) {
+                    let s = $(item).html();
+                    let pos = s.indexOf("-");
+                    let name = s.substring(0, pos);
+                    let url = s.substring(pos + 1);
+                    output += "<li><a href=" + url + ">" + name + "</a></li>";
+                });
+                $("#here").html(output + "</ul>");
+                $("li").addClass("high-light");
+            });
+
+            $("#btn7").click(function () {
+                let obj1 = {"name": "임덕배", age: 30};
+                let obj2 = {"major": "심리학", school:"고려대"};
+                $.extend(obj1, obj2, {phone: "010-1234-5678"});
+                let s = "";
+                $.each(obj1, function (key, value) {
+                    //here.innerHTML += "<br>" + key + ">" + value;
+                    s += "<br>" + key + ">" + value;
+                });
+                $("#here").html(s);
+            });
+        });
+    </script>
+</head>
+<body>
+<h1>jQuery문법</h1>
+<h1 class="active">jQuery문법1</h1>
+<h1 class="active">jQuery문법2</h1>
+<h1 class="active">jQuery문법3</h1>
+<h1>jQuery문법</h1>
+<button id="btn1">jquery이용하기1</button>
+<button id="btn2">CSS변경1</button>
+<button id="btn3">CSS변경2</button>
+<button id="btn4">each</button>
+<button id="btn5">each(selector이용)</button>
+<button id="btn6">each(LAB)</button>
+<button id="btn7">extend</button>
+<div id="mydata">
+    <p>다음-http://www.daum.net</p>
+    <p>네이버-http://www.naver.com</p>
+    <p>구글-http://www.google.com</p>
+</div>
+<hr>
+<div id="here"><p>여기</p></div>
+</body>
+</html>

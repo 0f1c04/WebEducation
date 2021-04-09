@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+
+    <title>Insert title here</title>
+    <style>
+        .style1 {
+            border: 1px solid gray;
+            padding: 10px;
+            background-color: pink;
+            margin: 10px;
+        }
+
+        .style2 {
+            border: 5px dotted blue;
+            padding: 10px;
+            background-color: skyblue;
+            margin: 10px;
+        }
+    </style>
+    <script src="js/jquery-3.6.0.js"></script>
+    <script>
+        $(function () {
+            $("#btn1").click(function () {
+                $("h3:even").css("background-color", "lightyellow");
+            });
+
+            $("#btn2").click(function () {
+                $("h3").filter(":odd").css("background-color", "lightgreen");
+            });
+
+            $("#btn3").click(function () {
+                $("h3").filter(function (idx, item) {
+                    return idx == 0 || idx == 4 ? true : false;
+                }).css("background-color", "skyblue");
+            });
+            $("#btn3").click(function () {
+                $("h3").filter(":nth-child(3n)").css("color", "red");
+            });
+            $("#btn3").click(function () {
+                $("h3").filter(function (idx, item) {
+                    //선택하고자한다면 return true, 그렇지 않으면 return false
+                    return idx == 1 || idx == 4 ? true : false;
+                }).css("color", "pink");
+            });
+
+            $("#btn4").click(function () {
+                $("h3").css("border", "1px solid gray")
+                    .filter(":odd").css("background-color", "skyblue")
+                    .end().filter(":even").css("color", "red");
+            });
+
+            $("#btn5").click(function () {
+                // $("h3").eq(0).css("background-color", "orange");
+                $("h3").first().css("background-color", "orange");
+                //$("h3").eq(-1).css("background-color", "orange");
+                $("h3").last().css("background-color", "orange");
+                $("h3").eq(3).css("background-color", "orange");
+                $("h3").eq(-2).css("background-color", "orange");
+            });
+
+            $("#btn6").click(function () {
+                $("h3").css("background-color", "lightyellow")
+                    .add("button")
+                    .css("color", "purple");
+            });
+
+            $("#btn7").click(function () {
+                //json
+                let j = '{"name":"임", "age":20}';
+                var obj = JSON.parse(j);
+                $("#here").html(obj.name);
+
+                //xml
+                let x = '<customers>' +
+                    '<customer><name>홍1</name><age>40</age></customer>' +
+                    '<customer><name>홍2</name><age>420</age></customer>' +
+                    '<customer><name>홍3</name><age>10</age></customer>' +
+                    '</customers>';
+                var obj = $.parseXML(x);
+                var s = "";
+                $(obj).find("customer").each(function (idx, item) {
+                    s += $(item).find("name").text();
+                });
+                $("#here").html(s);
+            });
+
+            $("#btn8").click(function () {
+                $(this).parent().css("background-color", "yellow");
+                var s = $(this).text();
+                if (s == "활성화하기") {
+                    $(this).text("비활성화하기");
+                    $(this).parent().find("span").text("활성화하기");
+                } else {
+                    $(this).text("활성화하기");
+                    $(this).parent().find("span").text("비활성화하기");
+                }
+            });
+
+            $("#btn9").click(function () {
+                $("#here").addClass("style1");
+                $("#here").addClass("style2");
+            });
+
+            $("#btn10").click(function () {
+                $("#here").removeClass("style2");
+            });
+        });
+    </script>
+</head>
+<body>
+<h1>jQuery DOM활용</h1>
+<button id="btn1">filter1</button>
+<button id="btn2">filter2</button>
+<button id="btn3">filter3</button>
+<button id="btn4">end</button>
+<button id="btn5">특정위치</button>
+<button id="btn6">add</button>
+<button id="btn7">XML파싱</button>
+<button id="btn9">class추가</button>
+<button id="btn10">class제거</button>
+<hr>
+<h3>HTML1</h3>
+<h3>HTML2</h3>
+<h3>HTML3</h3>
+<h3>HTML4</h3>
+<h3>HTML5</h3>
+<div id="here">
+    <span>비활성하기</span>
+    <button id="btn8">활성화하기(parent)</button>
+</div>
+</body>
+</html>

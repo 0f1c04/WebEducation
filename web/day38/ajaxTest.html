@@ -86,23 +86,26 @@
                     if (xhr.readyState == 4 && xhr.status == 200) {
                         var obj = JSON.parse(xhr.responseText); // Convert JSON to array.
 
-                        let s = "<table><tr><th>종목명</th><th>시가</th><th>종가</th><th>저가</th><th>고가</th><th>거래량</th><th>거래금액</th><th>전일종가</th><th>최근 거래량</th><th>최근 거래금액</th><th>최근 변동가</th><th>최근 변동률</th><th>시간</th></tr>"
+                        // here.innerHTML += xhr.responseText;
+
+                        let result = "<table><tr><th>종목명</th><th>시가</th><th>종가</th><th>저가</th><th>고가</th><th>거래량</th><th>거래금액</th><th>전일종가</th><th>최근 거래량</th><th>최근 거래금액</th><th>최근 변동가</th><th>최근 변동률</tr>"
                         for (let i in obj["data"]) {
-                            s += "<tr><td>" + i + "</td>";
-                            s += "<td>" + obj.data[i].opening_price + "</td>";
-                            s += "<td>" + obj.data[i].closing_price + "</td>";
-                            s += "<td>" + obj.data[i].min_price + "</td>";
-                            s += "<td>" + obj.data[i].max_price + "</td>";
-                            s += "<td>" + obj.data[i].units_traded + "</td>";
-                            s += "<td>" + obj.data[i].acc_trade_value + "</td>";
-                            s += "<td>" + obj.data[i].prev_closing_price + "</td>";
-                            s += "<td>" + obj.data[i].units_traded_24H + "</td>";
-                            s += "<td>" + obj.data[i].acc_trade_value_24H + "</td>";
-                            s += "<td>" + obj.data[i].fluctate_24H + "</td>";
-                            s += "<td>" + obj.data[i].fluctate_rate_24H + "</td>";
-                            s += "<td>" + obj.data[i].date + "</td></tr>";
+                            // for(let i; i < obj["data"].length; i++) {
+                            if(i === "date") break;
+                            result += "<tr><td>" + i + "</td>";
+                            result += "<td>" + obj.data[i].opening_price + "</td>";
+                            result += "<td>" + obj.data[i].closing_price + "</td>";
+                            result += "<td>" + obj.data[i].min_price + "</td>";
+                            result += "<td>" + obj.data[i].max_price + "</td>";
+                            result += "<td>" + obj.data[i].units_traded + "</td>";
+                            result += "<td>" + obj.data[i].acc_trade_value + "</td>";
+                            result += "<td>" + obj.data[i].prev_closing_price + "</td>";
+                            result += "<td>" + obj.data[i].units_traded_24H + "</td>";
+                            result += "<td>" + obj.data[i].acc_trade_value_24H + "</td>";
+                            result += "<td>" + obj.data[i].fluctate_24H + "</td>";
+                            result += "<td>" + obj.data[i].fluctate_rate_24H + "</td>";
                         }
-                        here.innerHTML += s+ "</tabel>"
+                        here.innerHTML += result + "</tabel>"
                     }
                 };
                 xhr.send();

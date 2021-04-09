@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <title>Title</title>
+    <script src="js/jquery-3.6.0.js"></script>
+    <script>
+        $(function () {
+            var interID = setInterval(function () {
+                //$("li").first().appendTo($("ul"));}, 100); //이동
+                $("li").first().clone().appendTo($("ul"));}, 1000); //복제
+
+            $(this).mousemove(function () {
+                clearInterval(interID);
+            })
+        });
+    </script>
+</head>
+<body>
+<div class="row">
+    <ul>
+        <li><img src="../source_code/17/images/tree-1-thumb.jpg" data-src="images/tree-1.jpg" class="pic"></li>
+        <li><img src="../source_code/17/images/tree-2-thumb.jpg" data-src="images/tree-2.jpg" class="pic"></li>
+        <li><img src="../source_code/17/images/tree-3-thumb.jpg" data-src="images/tree-3.jpg" class="pic"></li>
+        <li><img src="../source_code/17/images/tree-4-thumb.jpg" data-src="images/tree-4.jpg" class="pic"></li>
+        <li><img src="../source_code/17/images/tree-5-thumb.jpg" data-src="images/tree-5.jpg" class="pic"></li>
+        <li><img src="../source_code/17/images/tree-6-thumb.jpg" data-src="images/tree-6.jpg" class="pic"></li>
+    </ul>
+</div>
+</body>
+</html>

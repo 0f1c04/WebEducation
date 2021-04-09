@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        //window.onload=function(){alert("After Onload1")};
+        //window.onload=function(){alert("After Onload2")};
+        //jQuery == $
+        $(document).ready(function() {
+            var s = $("#here").html();
+            $("#here").html(s + "<p>ready jQuery1</p>");
+        });
+        $(document).ready(function() {
+            var s = $("#here").html();
+            $("#here").html(s + "<p>ready jQuery2</p>");
+        });
+        $(function() {
+            var s = $("#here").html();
+            $("#here").html(s + "<p>jQuery1</p>");
+        });
+        $(function() {
+            var s = $("#here").html();
+            $("#here").html(s + "<p>jQuery2</p>");
+        });
+        $(function(){
+            $("#btn1").click(function(){
+                $("#here").html("<h1>버튼을누름!</h1>");
+            });
+        });
+
+        $(function(){
+            $("#btn2").click(function(){
+                $("#here").css("color","red");
+                var obj = {border:"1px solid green",
+                    "background-color":"orange"
+                };
+                $("#here").css(obj);
+            });
+
+            $("#btn3").click(function(){
+                $(".active").css("color","pink");
+            });
+
+            $("#btn4").click(function () {
+                let arr = ["바나나", "사과", "오렌지", "한라봉"];
+                let s = "";
+                $.each(arr, function (idx, item) {
+                    s += idx + "번째: " + item + "<br>";
+                });
+                $("#here").html(s);
+            });
+
+            $("#btn5").click(function(){
+                let s = "<ul>";
+                $("h1,h2").each(function(idx, item){
+                    s += "<li>" + $(item).html() + "</li>";
+                });
+                $("#here").html(s+"</ul>");
+            });
+        });
+
+
+    </script>
+</head>
+<body>
+<h1>jQuery문법1</h1>
+<h1 class="active">jQuery문법2</h1>
+<h1 class="active">jQuery문법3</h1>
+<h2 class="active">jQuery문법4</h2>
+<h1>jQuery문법5</h1>
+<button id="btn1">jquery이용하기1</button>
+<button id="btn2">CSS변경1</button>
+<button id="btn3">CSS변경2</button>
+<button id="btn4">each</button>
+<button id="btn5">each(selector이용)</button>
+<hr>
+<div id="here"></div>
+</body>
+</html>
